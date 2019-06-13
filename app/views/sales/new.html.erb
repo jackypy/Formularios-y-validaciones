@@ -1,0 +1,68 @@
+<h1>Ventas</h1>
+<div class="mi_form">
+  <%= form_with(model: @sale, local: true, method: 'post') do |form| %>
+  <% if @sale.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@sale.errors.count, "error") %>
+      error al crear Ventas:
+    </h2>
+    <ul>
+      <% @sale.errors.full_massages.each do |message| %>
+      <li><%= message %></li>
+    </ul>
+      <% end %>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <fieldset>
+      <%= form.label :cod, class: "control-label"  %>
+      <%= form.number_field :cod, id: :sale_cod, class: "form-control", placeholder: "Ingrese ..." %>
+      </fieldset>
+</div>
+
+<div class="form-group">
+  <fieldset>
+    <%= form.label :detail, class: "control-label"  %>
+    <%= form.text_area :detail, id: :sale_detail, class: "form-control", placeholder: "Ingrese ...", rows: 5 %>
+    <span> * texto</span>
+    </fieldset>
+</div>
+
+<div class="form-group">
+  <fieldset>
+    <%= form.label :category, class: "control-label"  %>
+    <%= form.text_field :category, id: :sale_category, class: "form-control", placeholder: "Ingrese ..." %>
+    </fieldset>
+</div>
+
+<div class="form-group">
+  <fieldset>
+    <%= form.label :value, class: "control-label"  %>
+    <%= form.number_field :value, id: :sale_value, class: "form-control", placeholder: "Ingrese ..." %>
+    </fieldset>
+</div>
+
+<div class="form-group">
+  <fieldset>
+    <%= form.label :discount, class: "control-label"  %>
+    <%= form.number_field :discount, id: :sale_dicount, class: "form-control", placeholder: "Ingrese ..." %>
+    </fieldset>
+</div>
+
+<div class="form-group">
+  <fieldset>
+    <%= form.label :tax, class: "control-label"  %>
+    <%= form.check_box :tax, id: :sale_tax, class: "form-control" %> Exento de IVA?
+    </fieldset>
+</div>
+
+<div class="form-group">
+  <fieldset>
+    <%= form.submit 'Guardar', class: "btn btn-success"  %>
+    </fieldset>
+</div>
+
+  <% end %>
+</div>
